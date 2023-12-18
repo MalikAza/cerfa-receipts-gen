@@ -6,11 +6,13 @@ use Monolog\ErrorHandler;
 use Monolog\Handler\StreamHandler;
 
 class Logger extends \Monolog\Logger {
+    /** @var Logger[] Stores the different Logger instances */
     private static $log_sys = [];
 
-    public function __construct($key = 'app', $config = null) {
+    private function __construct(string $key = 'app', $config = null) {
         parent::__construct($key);
 
+        // basic behavior for app logs
         if (empty($config)) {
             $LOG_PATH = Config::get('LOG_PATH', __DIR__ . '/../../log-files');
             $config = [
@@ -22,7 +24,19 @@ class Logger extends \Monolog\Logger {
         $this->pushHandler(new StreamHandler($config['logFile'], $config['logLevel']));
     }
 
-    public static function getInstance($key = 'app', $config = null): Logger {
+    /**
+     * Returns an instance of the Logger class based on the provided key and
+     * configuration.
+     * 
+     * @param string $key Used to identify the specific instance of the Logger. It
+     * is used as a key in the  array to store and retrieve the Logger instances.
+     * @param $config [OPTIONAL] Allows you to pass additional configuration options to the Logger.
+     * It can be used to customize the behavior of the logger, such as setting the log file path,
+     * log level, or any other configuration options specific.
+     * 
+     * @return Logger
+     */
+    public static function getInstance(string $key = 'app', $config = null): Logger {
         if (empty(self::$log_sys[$key])) {
             self::$log_sys[$key] = new Logger($key, $config);
         }
@@ -30,6 +44,10 @@ class Logger extends \Monolog\Logger {
         return self::$log_sys[$key];
     }
 
+    /**
+     * Enables system logs in PHP by creating loggers for errors and requests and saving
+     * them to log files.
+     */
     public static function enableSystemLogs() {
         $LOG_PATH = Config::get('LOG_PATH', __DIR__ . '/../../log-files');
 
