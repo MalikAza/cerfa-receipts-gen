@@ -14,6 +14,7 @@
     ],
     "require": {
         "monolog/monolog": "1.25.1",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "mikehaertl/php-pdftk": "^0.13.1"
     }
 }
