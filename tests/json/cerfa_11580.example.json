@@ -1,0 +1,57 @@
+{
+    "receiptOrder": "",
+    "association": {
+        "name": "",
+        "sirenOrRna": "",
+        "address": {
+            "number": 0,
+            "roadName": "",
+            "postalCode": "",
+            "city": "",
+            "country": ""
+        },
+        "cac": [
+            ""
+        ]
+    },
+    "object": "",
+    "donor": {
+        "lastName": "",
+        "firstName": "",
+        "address": {
+            "number": 0,
+            "roadName": "",
+            "postalCode": "",
+            "city": "",
+            "country": ""
+        }
+    },
+    "donation": {
+        "amount": 0,
+        "amountInWords": "",
+        "date": 1234567890,
+        "formCac": [
+            "authentic",
+            "private",
+            "manual",
+            "other"
+        ],
+        "natureCac": [
+            "numerary",
+            "listedCompanies",
+            "expressAbandonment",
+            "volunteers",
+            "others"
+        ],
+        "numeraryNatureCac": [
+            "cash",
+            "bankCheck",
+            "transferDebitCard"
+        ]
+    },
+    "cacCgi": [
+        200,
+        978
+    ],
+    "signatureDate": 1234567890 
+}

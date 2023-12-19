@@ -1,0 +1,51 @@
+{
+    "receiptOrder": "",
+    "association": {
+        "name": "",
+        "sirenOrRna": "",
+        "address": {
+            "number": 0,
+            "roadName": "",
+            "postalCode": "",
+            "city": "",
+            "country": ""
+        },
+        "cac": [
+            ""
+        ]
+    },
+    "object": "",
+    "entreprise": {
+        "name": "",
+        "legalStatus": "",
+        "siren": "",
+        "address": {
+            "number": 0,
+            "roadName": "",
+            "postalCode": "",
+            "city": ""
+        }
+    },
+    "donation": {
+        "kindDonation": {
+            "amount": 0,
+            "amountInWords": "",
+            "description": ""
+        },
+        "payment": {
+            "amount": 0,
+            "amountInWords": "",
+            "formCac": [
+                "cash",
+                "bankCheck",
+                "transferDebitCard",
+                "other"
+            ]
+        },
+        "toOrganization": {
+            "amount": 0,
+            "amountInWords": ""
+        }
+    },
+    "signatureDate": 1234567890
+}

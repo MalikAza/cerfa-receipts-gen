@@ -2,3 +2,4 @@
 /vendor/
 log-files/
 .env
+test.php
