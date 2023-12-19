@@ -13,6 +13,7 @@
         }
     ],
     "require": {
-        "monolog/monolog": "1.25.1"
+        "monolog/monolog": "1.25.1",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

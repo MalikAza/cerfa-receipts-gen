@@ -1,3 +1,4 @@
 .vscode
 /vendor/
 log-files/
+.env
