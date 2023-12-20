@@ -115,9 +115,24 @@
             "date": timestamp,
             "type": "payment",
             "optionalFields": {
-                "form": string,
-                "nature": string,
-                "method": string,
+                "form": (
+                    "authentic",
+                    "private",
+                    "manual",
+                    "other"
+                ),
+                "nature": (
+                    "numerary",
+                    "listed",
+                    "abandonment",
+                    "volunteers",
+                    "other"
+                ),
+                "method": (
+                    "cash",
+                    "bankCheck",
+                    "transferDebitCard"
+                ),
                 "cgi": {
                     "200": boolean,
                     "978": boolean
