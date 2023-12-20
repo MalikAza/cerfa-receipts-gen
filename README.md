@@ -52,7 +52,7 @@
     },
     "donations": [
         {
-            "amount": integer,
+            "amount": float,
             "date": timestamp,
             "type": ("kind", "payment"),
             "optionalFields": {
@@ -111,7 +111,7 @@
     },
     "donations": [
         {
-            "amount": integer,
+            "amount": float,
             "date": timestamp,
             "type": "payment",
             "optionalFields": {
@@ -171,7 +171,7 @@
     },
     "donations": [
         {
-            "amount": integer,
+            "amount": float,
             "date": timestamp,
             "type": ("kind", "payment"),
             "optionalFields": {
