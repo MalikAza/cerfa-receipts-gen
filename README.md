@@ -9,65 +9,122 @@
 ## Documentation
 ### API Body Formats
 <details>
+    <summary>All possible keys</summary>
+
+```json
+{
+    "receiptNumber": integer,
+    "organism": {
+        "name": string,
+        "sirenOrRna": string,
+        "address" : {
+            "number": string,
+            "street": string,
+            "city": string,
+            "postCode": string,
+            "country": string
+        },
+        "object": string,
+        "status": {
+            "type": string,
+            "optionalFields": {
+                "date1": string,
+                "date2": string,
+                "date3": string,
+                "reason": string
+            }
+        }
+    },
+    "donor": {
+        "type": string,
+        "lastName": string,
+        "firstName": string,
+        "name": string,
+        "legalForm": string,
+        "siren": string,
+        "address": {
+            "number": string,
+            "street": string,
+            "city": string,
+            "postCode": string,
+            "country": string
+        }
+    },
+    "donations": [
+        {
+            "amount": integer,
+            "date": timestamp,
+            "type": ("kind", "payment"),
+            "optionalFields": {
+                "form": string,
+                "nature": string,
+                "method": string,
+                "cgi": {
+                    "200": boolean,
+                    "978": boolean
+                },
+                "reason": string
+            }
+        }
+    ]
+}
+```
+</details>
+<details>
     <summary>CERFA 11580</summary>
 
 ```json
 {
-    "receiptOrder": string,
-    "association": {
+    "receiptNumber": integer,
+    "organism": {
         "name": string,
         "sirenOrRna": string,
-        "address": {
-            "number": integer,
-            "roadName": string,
-            "postalCode": string,
+        "address" : {
+            "number": string,
+            "street": string,
             "city": string,
+            "postCode": string,
             "country": string
         },
-        "cac": [
-            string
-        ]
+        "object": string,
+        "status": {
+            "type": string,
+            "optionalFields": {
+                "date1": string,
+                "date2": string,
+                "date3": string,
+                "reason": string
+            }
+        }
     },
-    "object": string,
     "donor": {
+        "type": "individual",
         "lastName": string,
         "firstName": string,
         "address": {
-            "number": integer,
-            "roadName": string,
-            "postalCode": string,
+            "number": string,
+            "street": string,
             "city": string,
+            "postCode": string,
             "country": string
         }
     },
-    "donation": {
-        "amount": integer,
-        "amountInWords": string,
-        "date": timestamp,
-        "formCac": [
-            "authentic",
-            "private",
-            "manual",
-            "other"
-        ],
-        "natureCac": [
-            "numerary",
-            "listedCompanies",
-            "expressAbandonment",
-            "volunteers",
-            "others"
-        ],
-        "numeraryNatureCac": [
-            "cash",
-            "bankCheck",
-            "transferDebitCard"
-        ]
-    },
-    "cacCgi": [
-        200,
-        978
-    ],
-    "signatureDate": timestamp 
+    "donations": [
+        {
+            "amount": integer,
+            "date": timestamp,
+            "type": "payment",
+            "optionalFields": {
+                "form": string,
+                "nature": string,
+                "method": string,
+                "cgi": {
+                    "200": boolean,
+                    "978": boolean
+                }
+            }
+        }
+    ]
 }
 ```
 </details>
@@ -77,54 +134,52 @@
 
 ```json
 {
-    "receiptOrder": string,
-    "association": {
+    "receiptNumber": integer,
+    "organism": {
         "name": string,
         "sirenOrRna": string,
-        "address": {
-            "number": integer,
-            "roadName": string,
-            "postalCode": string,
+        "address" : {
+            "number": string,
+            "street": string,
             "city": string,
+            "postCode": string,
             "country": string
         },
-        "cac": [
-            string
-        ]
+        "object": string,
+        "status": {
+            "type": string,
+            "optionalFields": {
+                "date1": string,
+                "date2": string,
+                "date3": string,
+                "reason": string
+            }
+        }
     },
-    "object": string,
-    "entreprise": {
+    "donor": {
+        "type": "entreprise",
         "name": string,
-        "legalStatus": string,
+        "legalForm": string,
         "siren": string,
         "address": {
-            "number": integer,
-            "roadName": string,
-            "postalCode": string,
-            "city": string
+            "number": string,
+            "street": string,
+            "city": string,
+            "postCode": string,
+            "country": string
         }
     },
-    "donation": {
-        "kindDonation": {
+    "donations": [
+        {
             "amount": integer,
-            "amountInWords": string,
-            "description": string
-        },
-        "payment": {
-            "amount": integer,
-            "amountInWords": string,
-            "formCac": [
-                "cash",
-                "bankCheck",
-                "transferDebitCard",
-                "other"
-            ]
-        },
-        "toOrganization": {
-            "amount": integer,
-            "amountInWords": string
+            "date": timestamp,
+            "type": ("kind", "payment"),
+            "optionalFields": {
+                "method": string,
+                "reason": string
+            }
         }
-    },
-    "signatureDate": timestamp
+    ]
 }
 ```
+</details>
