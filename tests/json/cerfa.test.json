@@ -1,8 +1,14 @@
 {
-    "generate": {
+    "generateText": {
         "a1": "test"
     },
-    "generateNot": {
+    "generateNotText": {
         "a1": "notTest"
+    },
+    "generateButton": {
+        "CAC1": 1
+    },
+    "generateNotButton": {
+        "CAC1": "Off"
     }
 }

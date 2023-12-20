@@ -44,11 +44,11 @@ class Generator {
         $data = json_decode($json, true);
         switch ($type) {
             case self::CERFA_INDIVIDUAL:
-                $b64 = self::fillPDF(Config::get('CERFA_INDIVIDUAL_PATH'), $data);
+                $b64 = $this->fillPDF(Config::get('CERFA_INDIVIDUAL_PATH'), $data);
                 break;
             
             case self::CERFA_ENTREPRISE:
-                $b64 = self::fillPDF(Config::get('CERFA_ENTREPRISE_PATH'), $data);
+                $b64 = $this->fillPDF(Config::get('CERFA_ENTREPRISE_PATH'), $data);
                 break;
 
             default:

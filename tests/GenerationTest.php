@@ -31,8 +31,8 @@ final class GenerationTest extends TestCase {
         $this->pdfEntreprise = new Pdf(Config::get('CERFA_ENTREPRISE_PATH'));
     }
 
-    public function testGenerateIndividual(): void {
-        $data = self::$testData['generate'];
+    public function testGenerateTextIndividual(): void {
+        $data = self::$testData['generateText'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
@@ -46,9 +46,9 @@ final class GenerationTest extends TestCase {
         $this->assertEquals($expected, $actual);
     }
 
-    public function testNotGenerateIndividual(): void {
-        $expectedData = self::$testData['generate'];
-        $actualData = self::$testData['generateNot'];
+    public function testNotGenerateTextIndividual(): void {
+        $expectedData = self::$testData['generateText'];
+        $actualData = self::$testData['generateNotText'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
@@ -62,8 +62,8 @@ final class GenerationTest extends TestCase {
         $this->assertNotEquals($expected, $actual);
     }
 
-    public function testGenerateEntreprise(): void {
-        $data = self::$testData['generate'];
+    public function testGenerateTextEntreprise(): void {
+        $data = self::$testData['generateText'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
@@ -77,9 +77,71 @@ final class GenerationTest extends TestCase {
         $this->assertEquals($expected, $actual);
     }
 
-    public function testNotGenerateEntreprise(): void {
-        $expectedData = self::$testData['generate'];
-        $actualData = self::$testData['generateNot'];
+    public function testNotGenerateTextEntreprise(): void {
+        $expectedData = self::$testData['generateText'];
+        $actualData = self::$testData['generateNotText'];
+        $dateTime = new DateTime();
+        $timestamp = $dateTime->getTimestamp();
+        
+        $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
+        $this->pdfEntreprise->fillForm($expectedData)->needAppearances()->saveAs($expectedTmpPath);
+        $expectedTmpContent = file_get_contents($expectedTmpPath);
+
+        $expected = base64_encode($expectedTmpContent);
+        $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($actualData));
+
+        $this->assertNotEquals($expected, $actual);
+    }
+
+    public function testGenerateButtonIndividual(): void {
+        $data = self::$testData['generateButton'];
+        $dateTime = new DateTime();
+        $timestamp = $dateTime->getTimestamp();
+        
+        $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
+        $this->pdfIndividual->fillForm($data)->needAppearances()->saveAs($expectedTmpPath);
+        $expectedTmpContent = file_get_contents($expectedTmpPath);
+
+        $expected = base64_encode($expectedTmpContent);
+        $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($data));
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testNotGenerateButtonIndividual(): void {
+        $expectedData = self::$testData['generateButton'];
+        $actualData = self::$testData['generateNotButton'];
+        $dateTime = new DateTime();
+        $timestamp = $dateTime->getTimestamp();
+        
+        $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
+        $this->pdfIndividual->fillForm($expectedData)->needAppearances()->saveAs($expectedTmpPath);
+        $expectedTmpContent = file_get_contents($expectedTmpPath);
+
+        $expected = base64_encode($expectedTmpContent);
+        $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($actualData));
+
+        $this->assertNotEquals($expected, $actual);
+    }
+
+    public function testGenerateButtonEntreprise(): void {
+        $data = self::$testData['generateButton'];
+        $dateTime = new DateTime();
+        $timestamp = $dateTime->getTimestamp();
+        
+        $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
+        $this->pdfEntreprise->fillForm($data)->needAppearances()->saveAs($expectedTmpPath);
+        $expectedTmpContent = file_get_contents($expectedTmpPath);
+
+        $expected = base64_encode($expectedTmpContent);
+        $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($data));
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testNotGenerateButtonEntreprise(): void {
+        $expectedData = self::$testData['generateButton'];
+        $actualData = self::$testData['generateNotButton'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
