@@ -1,8 +1,7 @@
 <?php
 
-namespace CerfaReceiptsGen;
+namespace CerfaReceiptsGen\Controller;
 
-use CerfaReceiptsGen\Controller\Logger;
 use PDO;
 
 class Connector extends PDO {
