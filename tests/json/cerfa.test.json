@@ -1,0 +1,8 @@
+{
+    "generate": {
+        "a1": "test"
+    },
+    "generateNot": {
+        "a1": "notTest"
+    }
+}
