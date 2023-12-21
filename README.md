@@ -26,17 +26,50 @@
         },
         "object": string,
         "status": {
-            "type": string,
+            "type": (
+                "1901_LAW",
+                "PUBLIC_UTILITY",
+                "PUBLIC_UTILITY_MOSELLE",
+                "OTHER",
+                "UNIVERSITY",
+                "COMPANY_FONDATION",
+                "MUSEUM",
+                "FOREST_MANAGE",
+                "NGO",
+                "ALSACE_MOSELLE",
+                "DOTATION",
+                "PRESS_PLURALISM",
+                "ART_EDUCATION",
+                "CONSULAR_EDUCATION",
+                "SMB_FINANCIAL_SUPPORT",
+                "ART_PRESENTATION",
+                "HISTORICAL_MONUMENT",
+                "CULTURAL_PROTECTION",
+                "PRIVATE_RESEARCH",
+                "COMPANY_SOCIAL",
+                "INTERMEDIARY_ASSOCIATION",
+                "WORKSHOP_SOCIAL",
+                "ADAPTED_COMPANY",
+                "ANR",
+                "EMPLOYERS_GROUP",
+                "RECOVERY_COMPANY",
+                "EU_ORGANISM",
+                "IT_SCIENTIFIC_RESEARCH",
+                "DOCTORATE_THESIS",
+                "FRANCE_REPRESENTATIVE",
+                "AUDIOVISUALS",
+                "MUSICAL_TRAINING",
+                "APPROVED_ORGA_MANAGE"
+            ),
             "optionalFields": {
                 "date1": string,
                 "date2": string,
-                "date3": string,
                 "reason": string
             }
         }
     },
     "donor": {
-        "type": string,
+        "type": ("INDIVIDUAL", "COMPANY"),
         "lastName": string,
         "firstName": string,
         "name": string,
@@ -54,11 +87,27 @@
         {
             "amount": float,
             "date": timestamp,
-            "type": ("kind", "payment"),
+            "type": ("INKIND", "MONEY"),
             "optionalFields": {
-                "form": string,
-                "nature": string,
-                "method": string,
+                "form": (
+                    "AUTHENTIC",
+                    "PRIVATE",
+                    "MANUAL",
+                    "OTHER"
+                ),
+                "nature": (
+                    "MONETARY",
+                    "LISTED",
+                    "ABANDONMENT",
+                    "VOLUNTEERS",
+                    "OTHER"
+                ),
+                "method": (
+                    "CASH",
+                    "BANK_CHECK",
+                    "TRANSFER",
+                    "OTHER"
+                ),
                 "cgi": {
                     "200": boolean,
                     "978": boolean
@@ -88,17 +137,44 @@
         },
         "object": string,
         "status": {
-            "type": string,
+            "type": (
+                "1901_LAW",
+                "PUBLIC_UTILITY",
+                "PUBLIC_UTILITY_MOSELLE",
+                "OTHER",
+                "UNIVERSITY",
+                "COMPANY_FONDATION",
+                "MUSEUM",
+                "FOREST_MANAGE",
+                "NGO",
+                "ALSACE_MOSELLE",
+                "DOTATION",
+                "PRESS_PLURALISM",
+                "ART_EDUCATION",
+                "CONSULAR_EDUCATION",
+                "SMB_FINANCIAL_SUPPORT",
+                "ART_PRESENTATION",
+                "HISTORICAL_MONUMENT",
+                "CULTURAL_PROTECTION",
+                "PRIVATE_RESEARCH",
+                "COMPANY_SOCIAL",
+                "INTERMEDIARY_ASSOCIATION",
+                "WORKSHOP_SOCIAL",
+                "ADAPTED_COMPANY",
+                "ANR",
+                "EMPLOYERS_GROUP",
+                "RECOVERY_COMPANY",
+                "EU_ORGANISM"
+            ),
             "optionalFields": {
                 "date1": string,
                 "date2": string,
-                "date3": string,
                 "reason": string
             }
         }
     },
     "donor": {
-        "type": "individual",
+        "type": "INDIVIDUAL",
         "lastName": string,
         "firstName": string,
         "address": {
@@ -113,25 +189,25 @@
         {
             "amount": float,
             "date": timestamp,
-            "type": "payment",
+            "type": "MONEY",
             "optionalFields": {
                 "form": (
-                    "authentic",
-                    "private",
-                    "manual",
-                    "other"
+                    "AUTHENTIC",
+                    "PRIVATE",
+                    "MANUAL",
+                    "OTHER"
                 ),
                 "nature": (
-                    "numerary",
-                    "listed",
-                    "abandonment",
-                    "volunteers",
-                    "other"
+                    "MONETARY",
+                    "LISTED",
+                    "ABANDONMENT",
+                    "VOLUNTEERS",
+                    "OTHER"
                 ),
                 "method": (
-                    "cash",
-                    "bankCheck",
-                    "transferDebitCard"
+                    "CASH",
+                    "BANK_CHECK",
+                    "TRANSFER"
                 ),
                 "cgi": {
                     "200": boolean,
@@ -162,17 +238,39 @@
         },
         "object": string,
         "status": {
-            "type": string,
+            "type": (
+                "1901_LAW",
+                "PUBLIC_UTILITY",
+                "OTHER",
+                "UNIVERSITY",
+                "COMPANY_FONDATION",
+                "MUSEUM",
+                "NGO",
+                "ALSACE_MOSELLE",
+                "DOTATION",
+                "ART_EDUCATION",
+                "CONSULAR_EDUCATION",
+                "SMB_FINANCIAL_SUPPORT",
+                "ART_PRESENTATION",
+                "HISTORICAL_MONUMENT",
+                "CULTURAL_PROTECTION",
+                "EU_ORGANISM",
+                "IT_SCIENTIFIC_RESEARCH",
+                "DOCTORATE_THESIS",
+                "FRANCE_REPRESENTATIVE",
+                "AUDIOVISUALS",
+                "MUSICAL_TRAINING",
+                "APPROVED_ORGA_MANAGE"
+            ),
             "optionalFields": {
                 "date1": string,
                 "date2": string,
-                "date3": string,
                 "reason": string
             }
         }
     },
     "donor": {
-        "type": "entreprise",
+        "type": "COMPANY",
         "name": string,
         "legalForm": string,
         "siren": string,
@@ -188,9 +286,14 @@
         {
             "amount": float,
             "date": timestamp,
-            "type": ("kind", "payment"),
+            "type": ("INKIND", "MONEY"),
             "optionalFields": {
-                "method": string,
+                "method": (
+                    "CASH",
+                    "BANK_CHECK",
+                    "TRANSFER",
+                    "OTHER"
+                ),
                 "reason": string
             }
         }
