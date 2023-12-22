@@ -1,0 +1,310 @@
+{
+    "receiptNumber": {
+        "type": "string",
+        "field": "a1",
+        "mandatory": true
+    },
+    "organism_name": {
+        "type": "string",
+        "field": "a3",
+        "mandatory": true
+    },
+    "organism_sirenOrRna": {
+        "type": "string",
+        "field": "a4",
+        "mandatory": true
+    },
+    "organism_address_number": {
+        "type": "string",
+        "field": "a5",
+        "mandatory": true
+    },
+    "organism_address_street": {
+        "type": "string",
+        "field": "a6",
+        "mandatory": true
+    },
+    "organism_address_city": {
+        "type": "string",
+        "field": "a8",
+        "mandatory": true
+    },
+    "organism_address_postCode": {
+        "type": "string",
+        "field": "a7",
+        "mandatory": true
+    },
+    "organism_address_country": {
+        "type": "string",
+        "field": "a9",
+        "mandatory": true
+    },
+    "organism_object": {
+        "type": "string",
+        "field": "a10",
+        "mandatory": true
+    },
+    "organism_type": {
+        "type": "string",
+        "mandatory": true,
+        "dependency": {
+            "field": "organism_type",
+            "values": {
+                "1901_LAW": {
+                    "CAC1": 1,
+                    "CAC0": 1
+                },
+                "PUBLIC_UTILITY": {
+                    "CAC1": 1,
+                    "CAC0": 2
+                },
+                "PUBLIC_UTILITY_MOSELLE": {
+                    "CAC1": 1,
+                    "CAC0": 2
+                },
+                "UNIVERSITY": {
+                    "CAC1": 1,
+                    "CAC0": 3
+                },
+                "COMPANY_FONDATION": {
+                    "CAC1": 1,
+                    "CAC0": 4
+                },
+                "MUSEUM": {
+                    "CAC1": 1,
+                    "CAC0": 5
+                },
+                "NGO": {
+                    "CAC1": 1,
+                    "CAC0": 7
+                },
+                "FOREST_MANAGE": {
+                    "CAC1": 1,
+                    "CAC0": 6
+                },
+                "OTHER": {
+                    "CAC1": 1,
+                    "CAC0": 8
+                },
+                "ALSACE_MOSELLE": {
+                    "CAC2": 1
+                },
+                "DOTATION": {
+                    "CAC12": 1
+                },
+                "PRESS_PLURALISM": {
+                    "CAC5": 1
+                },
+                "ART_EDUCATION": {
+                    "CAC3": 1
+                },
+                "CONSULAR_EDUCATION": {
+                    "CAC4": 1
+                },
+                "SMB_FINANCIAL_SUPPORT": {
+                    "CAC13": 1
+                },
+                "ART_PRESENTATION": {
+                    "CAC6": 1
+                },
+                "HISTORICAL_MONUMENT": {
+                    "CAC11": 1
+                },
+                "CULTURAL_PROTECTION": {
+                    "CAC15": 1
+                },
+                "PRIVATE_RESEARCH": {
+                    "CAC40": 1
+                },
+                "COMPANY_SOCIAL": {
+                    "CAC41": 1
+                },
+                "INTERMEDIARY_ASSOCIATION": {
+                    "CAC42": 1
+                },
+                "WORKSHOP_SOCIAL": {
+                    "CAC43": 1
+                },
+                "ADAPTED_COMPANY": {
+                    "CAC44": 1
+                },
+                "ANR": {
+                    "CAC45": 1
+                },
+                "EMPLOYERS_GROUP": {
+                    "CAC46": 1
+                },
+                "RECOVERY_COMPANY": {
+                    "CAC47": 1
+                },
+                "EU_ORGANISM": {
+                    "CAC16": 1
+                }
+            }
+        }
+    },
+    "donor_lastName": {
+        "type": "string",
+        "field": "Nom",
+        "mandatory": true
+    },
+    "donor_firstName": {
+        "type": "string",
+        "field": "Prenom",
+        "mandatory": true
+    },
+    "donor_address_number": {
+        "type": "string",
+        "field": "a19",
+        "mandatory": true
+    },
+    "donor_address_street": {
+        "type": "string",
+        "field": "a20",
+        "mandatory": true
+    },
+    "donor_address_city": {
+        "type": "string",
+        "field": "a22",
+        "mandatory": true
+    },
+    "donor_address_postCode": {
+        "type": "string",
+        "field": "a21",
+        "mandatory": true
+    },
+    "donor_address_country": {
+        "type": "string",
+        "field": "a23",
+        "mandatory": true
+    },
+    "donation_amount": {
+        "type": "integer",
+        "field": "a27",
+        "mandatory": true
+    },
+    "donation_date": {
+        "type": "date",
+        "field": "d35-1",
+        "mandatory": true
+    },
+    "donation_form": {
+        "type": "string",
+        "mandatory": true,
+        "dependency": {
+            "field": "donation_form",
+            "values": {
+                "AUTHENTIC": {
+                    "CAC23": 1
+                },
+                "PRIVATE": {
+                    "CAC23": 2
+                },
+                "MANUAL": {
+                    "CAC23": 3
+                },
+                "OTHER": {
+                    "CAC23": 4
+                }
+            }
+        }
+    },
+    "donation_nature": {
+        "type": "string",
+        "mandatory": true,
+        "dependency": {
+            "field": "donation_nature",
+            "values": {
+                "MONETARY": {
+                    "CAC27": 1
+                },
+                "LISTED": {
+                    "CAC27": 2
+                },
+                "ABANDONMENT": {
+                    "CAC27": 3
+                },
+                "VOLUNTEERS": {
+                    "CAC27": 4
+                },
+                "OTHER": {
+                    "CAC27": 5
+                }
+            }
+        }
+    },
+    "donation_method": {
+        "type": "string",
+        "dependency": {
+            "field": "donation_method",
+            "values": {
+                "CASH": {
+                    "CAC17": 1
+                },
+                "BANK_CHECK": {
+                    "CAC17": 2
+                },
+                "TRANSFER": {
+                    "CAC17": 3
+                }
+            }
+        }
+    },
+    "donation_cgi_200": {
+        "type": "boolean",
+        "field": "CAC21"
+    },
+    "donation_cgi_978": {
+        "type": "boolean",
+        "field": "CAC22"
+    },
+    "date1": {
+        "type": "date",
+        "dependency": {
+            "field": "organisme_type",
+            "values": {
+                "PUBLIC_UTILITY": {
+                    "d12": "integer"
+                },
+                "PUBLIC_UTILITY_MOSELLE": {
+                    "d14": "integer"
+                },
+                "HISTORICAL_MONUMENT": {
+                    "d15": "integer"
+                },
+                "EU_ORGANISM": {
+                    "a18": "integer"
+                }
+            }
+        }
+    },
+    "date2": {
+        "type": "date",
+        "dependency": {
+            "field": "organisme_type",
+            "values": {
+                "PUBLIC_UTILITY": {
+                    "d13": "integer"
+                }
+            }
+        }
+    },
+    "reason1": {
+        "type": "string",
+        "dependency": {
+            "field": "organism_type",
+            "values": {
+                "OTHER": ["a11"]
+            }
+        }
+    },
+    "reason2": {
+        "type": "string",
+        "dependency": {
+            "field": "",
+            "values": {
+                "OTHER": ["a31"]
+            }
+        }
+    }
+}

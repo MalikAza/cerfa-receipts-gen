@@ -146,5 +146,52 @@
             "CAC19": 1,
             "CAC20": 1
         }
+    },
+    "validate": {
+        "receiptNumber": "receiptNumber",
+        "organism": {
+            "name": "organismname",
+            "sirenOrRna": "sirenorrna",
+            "address" : {
+                "number": "adressnumber",
+                "street": "addressstreet",
+                "city": "addresscity",
+                "postCode": "addresspostcode",
+                "country": "addresscountry"
+            },
+            "object": "object",
+            "type": "1901_LAW"
+        },
+        "donor": {
+            "type": "INDIVIDUAL",
+            "lastName": "donorlastname",
+            "firstName": "donorfirstname",
+            "legalForm": "donorlegalform",
+            "siren": "donorsiren",
+            "address": {
+                "number": "donoraddressnumber",
+                "street": "donoraddressstreet",
+                "city": "donoraddresscity",
+                "postCode": "donoraddresspostcode",
+                "country": "donoraddresscountry"
+            }
+        },
+        "donation":
+            {
+                "amount": 15,
+                "date": 123456789,
+                "type": "MONEY",
+                "form": "AUTHENTIC",
+                "nature": "MONETARY",
+                "method": "CASH",
+                "cgi": {
+                    "200": false,
+                    "978": false
+                }
+            },
+        "date1": 123456789,
+        "date2": 123456789,
+        "reason1": "reason1",
+        "reason2": "reason2"
     }
 }
