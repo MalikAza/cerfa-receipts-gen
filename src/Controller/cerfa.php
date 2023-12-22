@@ -16,7 +16,6 @@ class Cerfa {
 
     public function __construct(string $json) {
         $this->data = json_decode($json, true);
-        $this->setPath(); // TODO: how to force ?
 
         $tmpPath = __DIR__ . '/../../tmp';
         if (!file_exists($tmpPath)) mkdir($tmpPath, 0777, true);
