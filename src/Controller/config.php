@@ -20,6 +20,8 @@ class Config {
             self::$config = require_once(__DIR__ . '/../../config.php');
         }
 
-        return !empty(self::$config[$key]) ? self::$config[$key] : $default;
+        if (!empty(self::$config[$key])) return self::$config[$key];
+        else if (!empty($_ENV[$key])) return $_ENV[$key];
+        return $default;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
+use CerfaReceiptsGen\Controller\Cerfa;
 use CerfaReceiptsGen\Controller\Config;
-use CerfaReceiptsGen\Controller\Generator;
 use mikehaertl\pdftk\Pdf;
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,8 @@ final class GenerationIndividualTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($data));
+            $actual_cerfa = new Cerfa(json_encode($data));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertEquals($expected, $actual);
         }
@@ -53,7 +54,8 @@ final class GenerationIndividualTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode([$key => "not$value"]));
+            $actual_cerfa = new Cerfa(json_encode([$key => "not$value"]));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertNotEquals($expected, $actual);
         }
@@ -71,7 +73,8 @@ final class GenerationIndividualTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($data));
+            $actual_cerfa = new Cerfa(json_encode($data));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertEquals($expected, $actual);
         }
@@ -89,7 +92,8 @@ final class GenerationIndividualTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode([$key => 'Off']));
+            $actual_cerfa = new Cerfa(json_encode([$key => 'Off']));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertNotEquals($expected, $actual);
         }

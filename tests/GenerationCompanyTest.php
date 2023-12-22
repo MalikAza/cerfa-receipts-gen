@@ -1,11 +1,11 @@
 <?php
 
 use CerfaReceiptsGen\Controller\Config;
-use CerfaReceiptsGen\Controller\Generator;
+use CerfaReceiptsGen\Controller\Cerfa;
 use mikehaertl\pdftk\Pdf;
 use PHPUnit\Framework\TestCase;
 
-final class GenerationEntrepriseTest extends TestCase {
+final class GenerationCompanyTest extends TestCase {
     private static array $testData;
     private static string $tmpPath;
 
@@ -26,7 +26,7 @@ final class GenerationEntrepriseTest extends TestCase {
     public function testGenerateText(): void {
         $testData = self::$testData['text'];
         foreach ($testData as $key => $value) {
-            $templatePath = Config::get('CERFA_ENTREPRISE_PATH');
+            $templatePath = Config::get('CERFA_COMPANY_PATH');
             $data = [$key => $value];
             
             $expectedPdf = new Pdf($templatePath);
@@ -35,7 +35,8 @@ final class GenerationEntrepriseTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($data));
+            $actual_cerfa = new Cerfa(json_encode($data));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertEquals($expected, $actual);
         }
@@ -44,7 +45,7 @@ final class GenerationEntrepriseTest extends TestCase {
     public function testNotGenerateText(): void {
         $testData = self::$testData['text'];
         foreach ($testData as $key => $value) {
-            $templatePath = Config::get('CERFA_ENTREPRISE_PATH');
+            $templatePath = Config::get('CERFA_COMPANY_PATH');
             $data = [$key => $value];
             
             $expectedPdf = new Pdf($templatePath);
@@ -53,7 +54,8 @@ final class GenerationEntrepriseTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode([$key => "not$value"]));
+            $actual_cerfa = new Cerfa(json_encode([$key => "not$value"]));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertNotEquals($expected, $actual);
         }
@@ -62,7 +64,7 @@ final class GenerationEntrepriseTest extends TestCase {
     public function testGenerateButton(): void {
         $testData = self::$testData['button'];
         foreach ($testData as $key => $value) {
-            $templatePath = Config::get('CERFA_ENTREPRISE_PATH');
+            $templatePath = Config::get('CERFA_COMPANY_PATH');
             $data = [$key => $value];
             
             $expectedPdf = new Pdf($templatePath);
@@ -71,7 +73,8 @@ final class GenerationEntrepriseTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($data));
+            $actual_cerfa = new Cerfa(json_encode($data));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertEquals($expected, $actual);
         }
@@ -80,7 +83,7 @@ final class GenerationEntrepriseTest extends TestCase {
     public function testNotGenerateButton(): void {
         $testData = self::$testData['button'];
         foreach ($testData as $key => $value) {
-            $templatePath = Config::get('CERFA_ENTREPRISE_PATH');
+            $templatePath = Config::get('CERFA_COMPANY_PATH');
             $data = [$key => $value];
             
             $expectedPdf = new Pdf($templatePath);
@@ -89,7 +92,8 @@ final class GenerationEntrepriseTest extends TestCase {
             $expectedTmpContent = file_get_contents($expectedTmpPath);
 
             $expected = base64_encode($expectedTmpContent);
-            $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode([$key => 'Off']));
+            $actual_cerfa = new Cerfa(json_encode([$key => 'Off']));
+            $actual = $actual_cerfa->generate($templatePath);
 
             $this->assertNotEquals($expected, $actual);
         }

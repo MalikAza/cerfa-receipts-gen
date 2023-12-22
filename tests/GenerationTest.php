@@ -1,13 +1,13 @@
 <?php
 
+use CerfaReceiptsGen\Controller\Cerfa;
 use CerfaReceiptsGen\Controller\Config;
-use CerfaReceiptsGen\Controller\Generator;
 use mikehaertl\pdftk\Pdf;
 use PHPUnit\Framework\TestCase;
 
 final class GenerationTest extends TestCase {
     private Pdf $pdfIndividual;
-    private Pdf $pdfEntreprise;
+    private Pdf $pdfCompany;
 
     private static array $testData;
     private static string $tmpPath;
@@ -28,7 +28,7 @@ final class GenerationTest extends TestCase {
 
     protected function setUp(): void {
         $this->pdfIndividual = new Pdf(Config::get('CERFA_INDIVIDUAL_PATH'));
-        $this->pdfEntreprise = new Pdf(Config::get('CERFA_ENTREPRISE_PATH'));
+        $this->pdfCompany = new Pdf(Config::get('CERFA_COMPANY_PATH'));
     }
 
     public function testGenerateTextIndividual(): void {
@@ -41,7 +41,8 @@ final class GenerationTest extends TestCase {
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($data));
+        $actual_cerfa = new Cerfa(json_encode($data));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_INDIVIDUAL_PATH'));
 
         $this->assertEquals($expected, $actual);
     }
@@ -57,38 +58,41 @@ final class GenerationTest extends TestCase {
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($actualData));
+        $actual_cerfa = new Cerfa(json_encode($actualData));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_INDIVIDUAL_PATH'));
 
         $this->assertNotEquals($expected, $actual);
     }
 
-    public function testGenerateTextEntreprise(): void {
+    public function testGenerateTextCompany(): void {
         $data = self::$testData['generateText'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
         $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
-        $this->pdfEntreprise->fillForm($data)->needAppearances()->saveAs($expectedTmpPath);
+        $this->pdfCompany->fillForm($data)->needAppearances()->saveAs($expectedTmpPath);
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($data));
+        $actual_cerfa = new Cerfa(json_encode($data));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_COMPANY_PATH'));
 
         $this->assertEquals($expected, $actual);
     }
 
-    public function testNotGenerateTextEntreprise(): void {
+    public function testNotGenerateTextCompany(): void {
         $expectedData = self::$testData['generateText'];
         $actualData = self::$testData['generateNotText'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
         $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
-        $this->pdfEntreprise->fillForm($expectedData)->needAppearances()->saveAs($expectedTmpPath);
+        $this->pdfCompany->fillForm($expectedData)->needAppearances()->saveAs($expectedTmpPath);
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($actualData));
+        $actual_cerfa = new Cerfa(json_encode($actualData));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_COMPANY_PATH'));
 
         $this->assertNotEquals($expected, $actual);
     }
@@ -103,7 +107,8 @@ final class GenerationTest extends TestCase {
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($data));
+        $actual_cerfa = new Cerfa(json_encode($data));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_INDIVIDUAL_PATH'));
 
         $this->assertEquals($expected, $actual);
     }
@@ -119,38 +124,41 @@ final class GenerationTest extends TestCase {
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_INDIVIDUAL, json_encode($actualData));
+        $actual_cerfa = new Cerfa(json_encode($actualData));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_INDIVIDUAL_PATH'));
 
         $this->assertNotEquals($expected, $actual);
     }
 
-    public function testGenerateButtonEntreprise(): void {
+    public function testGenerateButtonCompany(): void {
         $data = self::$testData['generateButton'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
         $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
-        $this->pdfEntreprise->fillForm($data)->needAppearances()->saveAs($expectedTmpPath);
+        $this->pdfCompany->fillForm($data)->needAppearances()->saveAs($expectedTmpPath);
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($data));
+        $actual_cerfa = new Cerfa(json_encode($data));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_COMPANY_PATH'));
 
         $this->assertEquals($expected, $actual);
     }
 
-    public function testNotGenerateButtonEntreprise(): void {
+    public function testNotGenerateButtonCompany(): void {
         $expectedData = self::$testData['generateButton'];
         $actualData = self::$testData['generateNotButton'];
         $dateTime = new DateTime();
         $timestamp = $dateTime->getTimestamp();
         
         $expectedTmpPath = self::$tmpPath . "/$timestamp.expected.pdf";
-        $this->pdfEntreprise->fillForm($expectedData)->needAppearances()->saveAs($expectedTmpPath);
+        $this->pdfCompany->fillForm($expectedData)->needAppearances()->saveAs($expectedTmpPath);
         $expectedTmpContent = file_get_contents($expectedTmpPath);
 
         $expected = base64_encode($expectedTmpContent);
-        $actual = Generator::getInstance()->generate(Generator::CERFA_ENTREPRISE, json_encode($actualData));
+        $actual_cerfa = new Cerfa(json_encode($actualData));
+        $actual = $actual_cerfa->generate(Config::get('CERFA_COMPANY_PATH'));
 
         $this->assertNotEquals($expected, $actual);
     }
